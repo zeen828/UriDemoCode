@@ -18,6 +18,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        'App\Events\goUriSrt' => [
+            'App\Listeners\Uri\Access',
+            'App\Listeners\Uri\Log',
+        ],
     ];
 
     /**
