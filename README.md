@@ -37,3 +37,8 @@ php artisan serve
 # PHP8起一個服務
 php -S 127.0.0.1:3000
 ```
+
+## 單元測試
+php artisan make:test FormTest
+
+php artisan test
