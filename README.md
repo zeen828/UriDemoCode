@@ -38,6 +38,13 @@ php artisan serve
 php -S 127.0.0.1:3000
 ```
 
+## 高併發處理
+1. 建立緩存
+2. 附載均衡
+3. 掛CDN
+4. 短網址跳轉頁面變成實體頁緩存
+5. 資料讀寫分離
+
 ## 單元測試
 php artisan make:test FormTest
 

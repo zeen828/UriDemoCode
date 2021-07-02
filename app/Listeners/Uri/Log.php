@@ -32,7 +32,7 @@ class Log
         //
         $data = $event->data;
         // var_dump($data);
-        $this->repository->model()::create([
+        $this->repository->save([
             'srt_id' => $data['id'],
             'srt' => $data['srt'],
             'uri' => $data['uri'],

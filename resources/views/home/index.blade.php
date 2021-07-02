@@ -1,16 +1,16 @@
 @extends('html.bootstrap4')
 
-@section('title', $title)
+@section('title', '短網址產生器')
 
 @section('content')
             <div class="row align-items-center">
                 <div class="col text-center">
-                    <h1>{{$title}}</h1>
+                    <h1>短網址產生器</h1>
                 </div>
             </div>
             <div class="row align-items-center">
                 <div class="col">
-                <form method="{{$method}}" action="{{$action}}">
+                <form method="post" action="/">
                     {{csrf_field()}}
                     <label for="url">URL:</label>
                     <input type="url" name="url" id="url" class="form-control" required>

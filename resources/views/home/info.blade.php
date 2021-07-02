@@ -1,11 +1,11 @@
 @extends('html.bootstrap4')
 
-@section('title', $title)
+@section('title', '短網址資訊')
 
 @section('content')
             <div class="row align-items-center">
                 <div class="col text-center">
-                    <h1>{{$title}}</h1>
+                    <h1>短網址資訊</h1>
                 </div>
             </div>
             <div class="row align-items-center">

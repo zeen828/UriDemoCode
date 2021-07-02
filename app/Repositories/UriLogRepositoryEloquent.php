@@ -32,7 +32,6 @@ class UriLogRepositoryEloquent extends BaseRepository implements UriLogRepositor
     */
     public function validator()
     {
-
         return UriLogValidator::class;
     }
 
@@ -44,5 +43,30 @@ class UriLogRepositoryEloquent extends BaseRepository implements UriLogRepositor
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
+    // save new
+    public function save($data)
+    {
+        return $this->model()::create($data);
+    }
+
+    // get all
+    public function getAll()
+    {
+        return $this->get();
+    }
+
+    // get id
+    public function getById($id)
+    {
+        return $this->where('id', $id)->first();
+    }
+
+    // update id
+    public function update($id, $data)
+    {
+        return $this->where('id', $id)->update($data);
+    }
+
+    // 自訂區
 }

@@ -18,10 +18,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Route::resource('/uri/srt', \App\Http\Controllers\UriSrtsController::class);
-// Route::resource('/uri/log', UriLogsController::class);
+// Route::resource('/uri/log', \App\Http\Controllers\UriLogsController::class);
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
-Route::post('/', [\App\Http\Controllers\HomeController::class, 'post'])->name('home.post');
+Route::post('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index.post');
 
 Route::get('/go/{srt}', [\App\Http\Controllers\HomeController::class, 'go'])->name('home.go');
 Route::get('/go/{srt}/info', [\App\Http\Controllers\HomeController::class, 'info'])->name('home.info');

@@ -34,7 +34,6 @@ class Access
         //
         $data = $event->data;
         // var_dump($data);
-        $this->repository->model()::where('id', $data['id'])
-            ->increment('access');
+        $this->repository->accessById($data['id']);
     }
 }

@@ -37,10 +37,8 @@ class UriSrtRepositoryEloquent extends BaseRepository implements UriSrtRepositor
     */
     public function validator()
     {
-
         return UriSrtValidator::class;
     }
-
 
     /**
      * Boot up the repository, pushing criteria
@@ -49,7 +47,62 @@ class UriSrtRepositoryEloquent extends BaseRepository implements UriSrtRepositor
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
+    // save new
+    public function save($data)
+    {
+        return $this->model()::create($data);
+    }
+
+    // get all
+    public function getAll()
+    {
+        return $this->get();
+    }
+
+    // get id
+    public function getById($id)
+    {
+        return $this->where('id', $id)->first();
+    }
+
+    // update id
+    public function update($id, $data)
+    {
+        return $this->where('id', $id)->update($data);
+    }
+
+    // 自訂區
+    public function getCriteriaById($id)
+    {
+        $this->pushCriteria(app('App\Criteria\UriSrt\IndexCriteria'));
+        return $this->where('id', $id)->first();
+    }
+
+    public function getCriteriaBySrt($srt)
+    {
+        $this->pushCriteria(app('App\Criteria\UriSrt\IndexCriteria'));
+        return $this->where('srt', $srt)->first();
+    }
+
+    public function accessById($id)
+    {
+        $this->where('id', $id)->increment('access');
+    }
+
+    public function saveRedisBySrt($srt, $data)
+    {
+        $key = sprintf('uri:key:%s', $srt);
+        // Redis::set('key', 'value', 'EX', 60);
+        Redis::set($key, json_encode($data), 'EX', 7*24*60*60);
+    }
+
+    public function getRedisBySrt($srt)
+    {
+        $key = sprintf('uri:key:%s', $srt);
+        return Redis::get($key);
+    }
+
     // 登記短字串網址
     public function registerUriSrt($go_url)
     {
